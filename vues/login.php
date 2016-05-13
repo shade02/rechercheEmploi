@@ -33,12 +33,19 @@
             <form id="loginForm" class="form" role="form">
                 <h2>Connexion</h2>
                 <label class="radio-inline">
-                    <input type="radio" name="optradio" value="employeur">Employeur
+                    <input type="radio" name="optradio" value="employeur" checked="<?php if(isset($_REQUEST['EmployeurState'])) echo $_REQUEST['EmployeurState'] ?>">Employeur
                 </label>
                 <label class="radio-inline">
-                    <input type="radio" name="optradio" value="candidat">Chercheur d'emplois
+                    <input type="radio" name="optradio" value="candidat" checked="<?php if(isset($_REQUEST['CandidatState'])) echo $_REQUEST['CandidatState'] ?>">Chercheur d'emplois
                 </label>
-                
+                <?php if (ISSET($_REQUEST["field_messages"]["role"])) {
+                ?>
+                    <div class="alert alert-danger">
+                    <strong>Danger!</strong><?php echo $_REQUEST["field_messages"]["role"]; ?>
+                    </div>
+                <?php
+                    }
+                ?>
                 <div class="form-group">
                     <label for="username">Nom d'utilisateur: </label>
                     <input type="text"  class="form-control" name="username" value="<?php echo $u?>"/>
