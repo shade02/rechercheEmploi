@@ -37,8 +37,7 @@
                 </label>
                 <label class="radio-inline">
                     <input type="radio" name="optradio" value="candidat">Chercheur d'emplois
-                </label>
-                
+                </label>                
                 <div class="form-group">
                     <label for="username">Nom d'utilisateur: </label>
                     <input type="text"  class="form-control" name="username" value="<?php echo $u?>"/>
