@@ -1,5 +1,5 @@
 <?php
-
+require_once('./modele/classes/User.class.php');
 class Candidat extends User{
     private $nom;
     private $prenom;

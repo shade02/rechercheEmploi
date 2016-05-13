@@ -3,12 +3,14 @@ require_once('./controleur/Action.interface.php');
 
 class LoginAction implements Action{
     public function execute(){
-        
+        $vue = "login";
+        if (ISSET($_REQUEST['optradio']) && $_REQUEST['optradio']=="employeur" ){
+            
             if (!ISSET($_REQUEST['username']))
-                return "login";
+                $vue = "login";
             if (!$this->valide()){
                 //$_REQUEST["global_message"] = "Le formulaire contient des erreurs. Veuillez les corriger.";	
-                return "login";
+                $vue = "login";
             }
 
             require_once('./modele/EmployeurDAO.class.php');
@@ -16,17 +18,20 @@ class LoginAction implements Action{
             $emp = $edao->find($_REQUEST["username"]);
             if ($emp == null){
                 $_REQUEST["field_messages"]["username"] = "Utilisateur inexistant.";	
-                return "login";
+                $vue = "login";
             }
-            else if ($emp->getMotDePasse() != $_REQUEST["password"]){
-                $_REQUEST["field_messages"]["password"] = "Mot de passe incorrect.";	
-                return "login";
-            }
-            if (!ISSET($_SESSION)) session_start();
+            else {
+                if($emp->getMotDePasse() != $_REQUEST["password"]){
+                    $_REQUEST["field_messages"]["password"] = "Mot de passe incorrect.";	
+                    $vue = "login";
+                }     
+                if (!ISSET($_SESSION)) session_start();
                 $_SESSION["connecte"] = $_REQUEST["username"];
-                return "default";
-        
-       
+                $vue = "default";
+            }
+        }
+
+        return $vue;    
     }
     
     public function valide(){
