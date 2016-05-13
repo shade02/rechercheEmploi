@@ -46,6 +46,8 @@
                 <?php
                     }
                 ?>
+                    <input type="radio" name="optradio" value="candidat">Chercheur d'emplois
+                </label>                
                 <div class="form-group">
                     <label for="username">Nom d'utilisateur: </label>
                     <input type="text"  class="form-control" name="username" value="<?php echo $u?>"/>

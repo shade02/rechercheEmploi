@@ -30,7 +30,7 @@ if (!ISSET($_SESSION)) session_start();
 <?php
         }else{
 ?>
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li> 
+        <li><a href="?action=inscrire"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li> 
         <li><a href="?action=connecter"><span class="glyphicon glyphicon-log-in"></span> Se connecter</a></li>
 <?php
         }
