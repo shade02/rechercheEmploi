@@ -26,6 +26,9 @@ class ActionBuilder{
                         case "sauvegarder" :
                             return new SauvegarderAction();
                             break;
+                        case "creer" :
+                            return new CreerAction();
+                            break;
 		/*	case "afficher" :
 				return new AfficherAction();
 			break; 
