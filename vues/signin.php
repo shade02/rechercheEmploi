@@ -33,7 +33,7 @@
             </div>
             <div class="form-group">
                 <label for="username">Mot de passe : </label>
-                <input type="text"  class="form-control" name="password"/>
+                <input type="password"  class="form-control" name="password"/>
 <?php 
     if(isset($_REQUEST['messageErreurPassword'])) {
 ?>        

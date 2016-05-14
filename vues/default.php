@@ -17,7 +17,7 @@
 
   
 <div class="container-fluid text-center">    
-  <div class="row content">
+  <div id="main" class="row content">
     <?php
         include_once('./vues/menu.php');
     ?>
@@ -30,10 +30,10 @@
     </div>
     <div class="col-sm-2 sidenav">
       <div class="well">
-        <p>ADS</p>
+          <p><img src="./images/head_first.png" /></p>
       </div>
       <div class="well">
-        <p>ADS</p>
+          <p><img src="./images/php.jpg" /></p>
       </div>
     </div>
   </div>

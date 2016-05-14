@@ -10,12 +10,12 @@ if (!ISSET($_SESSION)) session_start();
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Logo</a>
+        <img src="./images/logo.png" />
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="?action=">Acceuil</a></li>
-        <li><a href="#">About</a></li>
+        <li class="active"><a href="?action=">Accueil</a></li>
+        <li><a href="?action=profil">Profil</a></li>
         <li><a href="#">Projects</a></li>
         <li><a href="#">Contact</a></li>
       </ul>

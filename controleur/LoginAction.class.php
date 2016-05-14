@@ -37,6 +37,9 @@ class LoginAction implements Action{
                 if (!ISSET($_SESSION)) session_start();
                 $_SESSION["connecte"] = $_REQUEST["username"];
                 $_SESSION["role"] = "employeur";
+                $_SESSION['nomEntreprise'] = $emp->getNomEntr();
+                $_SESSION['courriel'] = $emp->getCourriel();
+                $_SESSION['telephone'] = $emp->getTelephone();
                 $vue = "default";
             }
         }
@@ -64,6 +67,9 @@ class LoginAction implements Action{
                 if (!ISSET($_SESSION)) session_start();
                 $_SESSION["connecte"] = $_REQUEST["username"];
                 $_SESSION["role"] = "candidat";
+                $_SESSION['nom'] = $cand->getNom();
+                $_SESSION['prenom'] = $cand->getPrenom();
+                $_SESSION['courriel'] = $cand->getCourriel();
                 $vue = "default";
             }
         

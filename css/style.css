@@ -35,3 +35,14 @@ footer {
   }
   .row.content {height:auto;} 
 }
+#main {
+  //overflow:auto;
+  padding-bottom:800px; /* this needs to be bigger than footer height*/
+}
+.footer {
+  position: relative;
+  margin-top: -150px; /* negative value of footer height */
+  height: 50px;
+  clear:both;
+  padding-top:20px;
+} 
