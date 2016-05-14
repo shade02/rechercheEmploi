@@ -4,6 +4,7 @@ require_once('./controleur/LoginAction.class.php');
 require_once('./controleur/LogoutAction.class.php');
 require_once './controleur/SignInAction.class.php';
 require_once './controleur/ProfilAction.class.php';
+require_once('./controleur/SauvegarderAction.class.php');
 /*require_once('./controleur/AfficherAction.class.php');
 require_once('./controleur/AjouterAction.class.php');
 require_once('./controleur/SupprimerAction.class.php');*/

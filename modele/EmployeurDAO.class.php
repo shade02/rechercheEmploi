@@ -61,8 +61,8 @@ class EmployeurDAO{
     }
     
     public function update($x){
-        $request = "UPDATE employeur SET UserName = '".$x->getNomUser()."', MotDePasse = '".$x->getMotDePasse()."', NomEntr = '".$x->getNomEntr()."', NoEntr = '".$x->getNoEntrprise()."', Courriel = '".$x->getCourriel()."', Telephone = '".$x->getTelephone()."'".
-                " WHERE  = '".$x->getNomUser()."'";
+        $request = "UPDATE employeur SET NomEntr = '".$x->getNomEntr()."', NoEntr = '".$x->getNoEntrprise()."', Courriel = '".$x->getCourriel()."', Telephone = '".$x->getTelephone()."'".
+                " WHERE UserName = '".$x->getNomUser()."'";
         try{
             $db = Database::getInstance();
             return $db->exec($request);

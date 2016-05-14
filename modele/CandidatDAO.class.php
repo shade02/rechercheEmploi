@@ -61,8 +61,8 @@ class CandidatDAO{
     }
     
     public function update($x){
-        $request = "UPDATE candidat SET UserName = '".$x->getNomUser()."', MotDePasse = '".$x->getMotDePasse()."', Nom = '".$x->getNom()."', Prenom = '".$x->getPrenom()."', Courriel = '".$x->getCourriel()."', CV = '".$x->getCv()."'".
-                " WHERE  = '".$x->getNomUser()."'";
+        $request = "UPDATE candidat SET Nom = '".$x->getNom()."', Prenom = '".$x->getPrenom()."', Courriel = '".$x->getCourriel()."', CV = '".$x->getCv()."'".
+                " WHERE  UserName = '".$x->getNomUser()."'";
         try{
             $db = Database::getInstance();
             return $db->exec($request);
