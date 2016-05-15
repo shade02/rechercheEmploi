@@ -14,6 +14,7 @@ class Affiche{
     private $tel;
     private $courriel;
     private $noEntreprise;
+    private $nomUser;
     
     public function getNoAffiche() {
         return $this->noAffiche;
@@ -66,6 +67,10 @@ class Affiche{
     public function getNoEntreprise() { 
         return $this->noEntreprise;
     }
+    
+    public function getNomUser() {
+        return $this->nomUser;
+    }
 
     public function setNoAffiche($noAffiche) {
         $this->noAffiche = $noAffiche;
@@ -117,6 +122,10 @@ class Affiche{
 
     public function setNoEntreprise($noEntreprise) {
         $this->noEntreprise = $noEntreprise;
+    }
+    
+    public function setNomUser($nomUser) {
+        $this->nomUser = $nomUser;
     }
 
     public function __toString(){

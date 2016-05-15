@@ -21,7 +21,7 @@
         ?>
         <div class="col-sm-8 text-left"> 
 <?php
-    if( isset( $_REQUEST['role'] ) && $_REQUEST['role'] == 'employeur' ) {        
+    if( isset($_SESSION['role'] ) && $_SESSION['role'] == 'employeur' ) {        
 ?>        
             <h1>Profil de l'employeur</h1>
             <form action="?action=sauvegarder" method="post">
@@ -37,7 +37,7 @@
                 </div>
             </form>
 <?php
-    } else {
+    } else if( isset( $_SESSION['role'] ) && $_SESSION['role'] == 'candidat' ) {
 ?>
             <h1>Profil du candidat</h1>
             <form action="?action=sauvegarder" method="post">

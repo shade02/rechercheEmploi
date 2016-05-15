@@ -6,10 +6,10 @@ include_once('./modele/classes/Liste.class.php');
 class AfficheDAO{
     
     public function create($x){
-        $request = "INSERT INTO affiche (DatePublication,TitrePoste,Description,Niveau,Experience,Salaire,Statut,Duree,Contact,Telephone,Courriel,NoEntreprise)".
-                "VALUES ('".$x->getDatePublication()."','".$x->getTitrePoste()."','".$x->getDescription().
-                "','".$x->getNiveau()."','".$x->getExperience()."','".$x->getSalaire()."','".$x->getDuree()."','".$x->getStatut().
-                "','".$x->getContact()."','".$x->getTel()."','".$x->getCourriel()."','".$x->getNoEntreprise()."')";
+        $request = "INSERT INTO affiche (DatePublication,TitrePoste,Description,Niveau,Experience,Salaire,Statut,Duree,Contact,Telephone,Courriel,NoEntreprise,UserName)".
+                "VALUES (sysdate,'".$x->getTitrePoste()."','".$x->getDescription().
+                "','".$x->getNiveau()."','".$x->getExp()."','".$x->getSalaire()."','".$x->getDuree()."','".$x->getStatut().
+                "','".$x->getContact()."','".$x->getTel()."','".$x->getCourriel()."','".$x->getNoEntreprise()."','".$x->getNomUser()."')";
         try{
             $db = Database::getInstance();
             return $db->exec($request);
@@ -68,6 +68,7 @@ class AfficheDAO{
             return $liste;
         }    
     }
+    
     
     public function update($x){
         $request = "UPDATE affiche SET DatePublication = '".$x->getDatePublication()."', TitrePoste = '".$x->getTitrePoste()."', Description = '".$x->getDescription()."', Niveau = '".$x->getNiveau()."', Experience = '".$x->getExp()."', Salaire = '".$x->getSalaire()."', Duree = '".$x->getDuree()."', Contact = '".$x->getContact()."', Telephone = '".$x->getTel()."', Courriel = '".$x->getCourriel().", NoEntreprise = '".$x->getNoEntreprise()."'".

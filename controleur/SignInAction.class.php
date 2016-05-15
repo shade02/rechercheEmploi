@@ -27,7 +27,7 @@ class SignInAction implements Action {
                         $Employeur->setMotDePasse($_REQUEST['password']);
                         $EmployeurDAO = new EmployeurDAO();
                         $EmployeurDAO->create($Employeur);
-                    } else {
+                    } else if($_REQUEST['optradio'] == 'candidat' ){
                         $Candidat = new Candidat();
                         $Candidat->setNomUser($_REQUEST['username']);
                         $Candidat->setMotDePasse($_REQUEST['password']);
@@ -36,6 +36,8 @@ class SignInAction implements Action {
                     }
                     if (!ISSET($_SESSION)) session_start();
                     $_SESSION["connecte"] = $_REQUEST["username"];
+                    $_SESSION["role"] = $_REQUEST["optradio"];
+                
                     return "default";
                 }
             }

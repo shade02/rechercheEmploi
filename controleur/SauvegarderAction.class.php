@@ -9,7 +9,7 @@ class SauvegarderAction implements Action {
     public function execute() {
 
         if (!ISSET($_SESSION)) session_start();
-        if(isset($_REQUEST['role']) && $_REQUEST['role'] == 'employeur') {
+        if(isset($_SESSION['role']) && $_SESSION['role'] == 'employeur') {
             $Employeur = new Employeur();
             $Employeur->setNomUser($_SESSION['connecte']);
             $Employeur->setNomEntr($_REQUEST['nomEntreprise']);
@@ -17,7 +17,7 @@ class SauvegarderAction implements Action {
             $Employeur->setTelephone($_REQUEST['telephone']);
             $EmployeurDAO = new EmployeurDAO();
             $EmployeurDAO->update($Employeur);
-        } else {
+        } else  {
             $Candidat = new Candidat();
             $Candidat->setNomUser($_SESSION['connecte']);
             $Candidat->setNom($_REQUEST['nom']);
