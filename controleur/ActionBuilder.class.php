@@ -7,8 +7,10 @@ require_once './controleur/ProfilAction.class.php';
 require_once('./controleur/SauvegarderAction.class.php');
 require_once('./controleur/CreerAction.class.php');
 require_once('./controleur/PublierAction.class.php');
-/*require_once('./controleur/AfficherAction.class.php');
-require_once('./controleur/AjouterAction.class.php');
+require_once('./controleur/AfficherToutAction.class.php');
+require_once('./controleur/DetailsAction.class.php');
+require_once('./controleur/AfficherCandidatsAction.class.php');
+/*require_once('./controleur/AjouterAction.class.php');
 require_once('./controleur/SupprimerAction.class.php');*/
 class ActionBuilder{
 	public static function getAction($nom){
@@ -35,10 +37,16 @@ class ActionBuilder{
                         case "publier" :
                             return new PublierAction();
                             break;
-		/*	case "afficher" :
-				return new AfficherAction();
-			break; 
-			case "ajouter" :
+			case "affichertout" :
+				return new AfficherToutAction();
+                            break; 
+                        case "details" :
+                            return new DetailsAction();
+                            break;
+                        case "affichercandidats" :
+				return new AfficherCandidatsAction();
+                            break; 
+		/*	case "ajouter" :
 				return new AjouterAction();
 			break; 
 			case "supprimer" :

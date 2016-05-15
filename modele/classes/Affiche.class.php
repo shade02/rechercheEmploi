@@ -150,6 +150,7 @@ class Affiche{
         $this->tel = $ligne["Telephone"];
         $this->courriel = $ligne["Courriel"];
         $this->noEntreprise = $ligne["NoEntreprise"];
+        $this->nomUser = $ligne["UserName"];
     }
 }
 ?>

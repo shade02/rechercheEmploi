@@ -49,7 +49,7 @@
                     <label for="courriel">Courriel : </label>
                     <input type="text"  class="form-control" name="courriel" value="<?php if(isset($_SESSION['courriel'])) echo $_SESSION['courriel']; ?>"/>
                     <label for="cv">CV : </label>
-                    <input type="text"  class="form-control" name="cv"/>
+                    <input type="file"  name="cv"/>
                     <br />                    
                     <button type="submit" class="btn btn-primary">Sauvegarder</button>
                 </div>

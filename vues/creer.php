@@ -146,6 +146,7 @@
 ?>
             </div>
             <br />
+            <input name="action" value="publier" type="hidden" />
             <button type="submit" class="btn btn-default">Publier</button>
         </form>        
     </div>

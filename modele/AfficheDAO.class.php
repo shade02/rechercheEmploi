@@ -7,7 +7,7 @@ class AfficheDAO{
     
     public function create($x){
         $request = "INSERT INTO affiche (DatePublication,TitrePoste,Description,Niveau,Experience,Salaire,Statut,Duree,Contact,Telephone,Courriel,NoEntreprise,UserName)".
-                "VALUES (sysdate,'".$x->getTitrePoste()."','".$x->getDescription().
+                "VALUES (NOW(),'".$x->getTitrePoste()."','".$x->getDescription().
                 "','".$x->getNiveau()."','".$x->getExp()."','".$x->getSalaire()."','".$x->getDuree()."','".$x->getStatut().
                 "','".$x->getContact()."','".$x->getTel()."','".$x->getCourriel()."','".$x->getNoEntreprise()."','".$x->getNomUser()."')";
         try{
@@ -34,7 +34,7 @@ class AfficheDAO{
             $a->setNiveau($resultat->Niveau);
             $a->setExp($resultat->Experience);
             $a->setSalaire($resultat->Salaire);
-            $a->setSalaire($resultat->Statut);
+            $a->setStatut($resultat->Statut);
             $a->setDuree($resultat->Duree);
             $a->setContact($resultat->Contact);
             $a->setTel($resultat->Telephone);
@@ -54,7 +54,7 @@ class AfficheDAO{
             $request = "SELECT * FROM affiche";
             $connect = Database::getInstance();
         
-            $res = $connect->query('$request');
+            $res = $connect->query($request);
             foreach($res as $ligne){
                 $a = new Affiche();
                 $a->loadFromRecord($ligne);
