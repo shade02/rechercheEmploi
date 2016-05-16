@@ -129,7 +129,7 @@ class Affiche{
     }
 
     public function __toString(){
-        return "Affiche[".$this->noAffiche.",".$this->titrePoste.",".$this->datePublication.",".$this->statut."]";
+        return "Affiche[".$this->noAffiche.",".$this->titrePoste.",".$this->description.",".$this->niveau.",".$this->exp.",".$this->salaire.",".$this->duree.",".$this->contact.",".$this->tel.",".$this->courriel.",".$this->nomUser.",".$this->datePublication.",".$this->statut."]";
     }
     
     public function afficher(){

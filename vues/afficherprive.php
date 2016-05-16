@@ -12,6 +12,11 @@
 </head>
 <body>
 <?php
+if (!ISSET($_SESSION)) {
+    session_start();
+}
+?>
+<?php
     include_once('./vues/navigator.php');
 ?>
 
@@ -22,7 +27,7 @@
         include_once('./vues/menu.php');
     ?>
     <div class="col-sm-8 text-left"> 
-        <h2>Liste de candidats</h2>
+        <h2>Mes offres d'emplois</h2>
         
 <?php
     require_once('./modele/classes/Affiche.class.php');
@@ -34,28 +39,27 @@
         <table class="table table-bordered">
             <thead>
               <tr>
-                <th >Nom</th>
-                <th >Prénom</th>
-                <th >Courriel</th>
-                <th >Cv</th>
+                <th >Date</th>
+                <th > Poste</th>
               </tr>
             </thead>
             <tbody>
-<?php   $dao = new CandidatDAO();
-        $liste = $dao->findAll();;
+<?php   $dao = new AfficheDAO();
+        $liste = $dao->findAll();
     
         while($liste->next()){
             $a = $liste->current();
-    
+            
+            if($a->getNomUser()== $_SESSION['connecte']){
 ?>
               <tr>
-                <td ><?php echo $a->getNom();?></td>
-                <td ><?php echo $a->getPrenom();?></td>
-                <td ><?php echo $a->getCourriel();?></td>
-                <td><a href='<?php echo $a->getCv() ?>'>Visualiser</a></td>
+                <td ><?php echo $a->getDatePublication();?></td>
+                <td ><?php echo $a->getTitrePoste();?></td><td><a href='?action=details&id=<?php echo $a->getNoAffiche();?>'>Détails</a></td>
+                <td><a href='?action=supprimer&numSupp=<?php echo $a->getNoAffiche();?>'><span class='glyphicon glyphicon-trash'></span></a></td>
               </tr>
               
  <?php
+            }
         }
  ?>
             </tbody>

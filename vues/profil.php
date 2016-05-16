@@ -40,7 +40,7 @@
     } else if( isset( $_SESSION['role'] ) && $_SESSION['role'] == 'candidat' ) {
 ?>
             <h1>Profil du candidat</h1>
-            <form action="?action=sauvegarder" method="post">
+            <form action="?action=sauvegarder" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="nom">Nom : </label>
                     <input type="text"  class="form-control" name="nom" value="<?php if(isset($_SESSION['nom'])) echo $_SESSION['nom']; ?>"/>
@@ -49,23 +49,27 @@
                     <label for="courriel">Courriel : </label>
                     <input type="text"  class="form-control" name="courriel" value="<?php if(isset($_SESSION['courriel'])) echo $_SESSION['courriel']; ?>"/>
                     <label for="cv">CV : </label>
-                    <input type="file"  name="cv"/>
+                    <input type="file"  name="fileToUpload" id="fileToUpload"/>
                     <br />                    
                     <button type="submit" class="btn btn-primary">Sauvegarder</button>
+                    <?php 
+    if(isset($_REQUEST['messageFichier'])) {
+?>        
+                <div class="alert alert-warning">
+                    <strong>Attention!</strong><?php echo $_REQUEST['messageFichier'] ?>
+                </div>
+<?php
+    }
+?>            
                 </div>
             </form>
 <?php
     }
 ?>
         </div>
-        <div class="col-sm-2 sidenav">
-            <div class="well">
-                <p><img src="./images/head_first.png" /></p>
-            </div>
-            <div class="well">
-                <p><img src="./images/php.jpg" /></p>
-            </div>
-        </div>
+        <?php
+        include_once('./vues/sidenav.php');
+        ?>
     </div>
 </div>
 <?php

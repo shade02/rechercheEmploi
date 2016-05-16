@@ -10,8 +10,8 @@ require_once('./controleur/PublierAction.class.php');
 require_once('./controleur/AfficherToutAction.class.php');
 require_once('./controleur/DetailsAction.class.php');
 require_once('./controleur/AfficherCandidatsAction.class.php');
-/*require_once('./controleur/AjouterAction.class.php');
-require_once('./controleur/SupprimerAction.class.php');*/
+require_once('./controleur/AfficherPriveAction.class.php');
+require_once('./controleur/SupprimerAfficheAction.class.php');
 class ActionBuilder{
 	public static function getAction($nom){
 		switch ($nom)
@@ -46,12 +46,12 @@ class ActionBuilder{
                         case "affichercandidats" :
 				return new AfficherCandidatsAction();
                             break; 
-		/*	case "ajouter" :
-				return new AjouterAction();
-			break; 
+                        case "afficherprive" :
+				return new AfficherPriveAction();
+                            break; 
 			case "supprimer" :
-				return new SupprimerAction();
-			break; */
+				return new SupprimerAfficheAction();
+			break; 
 			default :
                             return new DefaultAction();
 		}

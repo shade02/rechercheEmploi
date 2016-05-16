@@ -41,8 +41,10 @@ class PublierAction implements Action{
         $AfficheDAO = new AfficheDAO();
         $AfficheDAO->create($Affiche);     
         
-           
+        echo $Affiche;  
         return "default"; 
+        
     }
+    
              
 }

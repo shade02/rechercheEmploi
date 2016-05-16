@@ -5,13 +5,33 @@ include_once('./modele/classes/Liste.class.php');
 
 class AfficheDAO{
     
-    public function create($x){
-        $request = "INSERT INTO affiche (DatePublication,TitrePoste,Description,Niveau,Experience,Salaire,Statut,Duree,Contact,Telephone,Courriel,NoEntreprise,UserName)".
-                "VALUES (NOW(),'".$x->getTitrePoste()."','".$x->getDescription().
-                "','".$x->getNiveau()."','".$x->getExp()."','".$x->getSalaire()."','".$x->getDuree()."','".$x->getStatut().
-                "','".$x->getContact()."','".$x->getTel()."','".$x->getCourriel()."','".$x->getNoEntreprise()."','".$x->getNomUser()."')";
+    public function create(Affiche $x){
+        /*$request = "INSERT INTO affiche (TitrePoste,Description,Niveau,Experience,Salaire,Statut,Duree,Contact,Telephone,Courriel,NoEntreprise,UserName)".
+                " VALUES ('".$x->getTitrePoste()."','".$x->getDescription().
+                "','".$x->getNiveau()."','".$x->getExp()."',".$x->getSalaire().",'".$x->getStatut()."','".$x->getDuree().
+                "','".$x->getContact()."',".$x->getTel().",'".$x->getCourriel()."',".$x->getNoEntreprise().",'".$x->getNomUser()."')";*/
+        //$request = "INSERT INTO affiche (DatePublication, TitrePoste, Description, Niveau, Experience, Duree, Contact,Salaire, Telephone, Courriel, UserName) VALUES (SYSDATE(),'" . $x->getTitrePoste() . "', '" . $x->getDescription() . "', '" . $x->getNiveau() . "', '" . $x->getExp() ."','". $x->getDuree() ."',' ".$x->getContact()."',".$x->getSalaire().",".$x->getTel().",'".$x->getCourriel()."','".$x->getNomUser()."')";
+        $request = "INSERT INTO affiche (DatePublication,TitrePoste,Description,Niveau,Experience,Salaire,Duree,Contact,Telephone,Courriel,UserName) "
+                . "VALUES (SYSDATE(),'".$x->getTitrePoste()."','".$x->getDescription()."','".$x->getNiveau()."','".$x->getExp()."',"
+                .$x->getSalaire().",'".$x->getDuree()."','".$x->getContact()."',".$x->getTel().",'"
+                .$x->getCourriel()."','".$x->getNomUser()."')";
         try{
             $db = Database::getInstance();
+            /*
+            $stmt = $db->prepare('INSERT INTO affiche(TitrePoste,Description,Niveau,Experience,Salaire,Statut,Duree,Contact,Telephone,Courriel) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+            $stmt->bind_param($TitrePoste, $Description, $Niveau, $Experience, $Salaire, $Statut, $Duree, $Contact, $Telephone, $Courriel);
+            $stmt->execute(array($TitrePoste, $x->getTitrePoste());
+            $Description = $x->getDescription();
+            $Niveau = $x->getNiveau();
+            $Experience = $x->getExp();
+            $Salaire = $x->getSalaire();
+            $Statut = $x->getStatut();
+            $Duree = $x->getDuree();
+            $Contact = $x->getContact();
+            $Telephone = $x->getTel();
+            $Courriel = $x->getCourriel();
+            */
+            echo $x;
             return $db->exec($request);
         } catch (Exception $ex) {
             throw $ex;
@@ -90,6 +110,27 @@ class AfficheDAO{
         } catch (Exception $ex) {
             throw $ex;
         }
+    }
+    public static function findByUser($user){
+        try{
+            $liste = new Liste();
+        
+            $request = "SELECT * FROM affiche WHERE UserName = '".$user.",";
+            $connect = Database::getInstance();
+        
+            $res = $connect->query($request);
+            foreach($res as $ligne){
+                $a = new Affiche();
+                $a->loadFromRecord($ligne);
+                $liste->add($a);
+            }
+            $res->closeCursor();
+            $connect = NULL;
+            return $liste;
+            
+        } catch (Exception $ex) {
+            return $liste;
+        }    
     }
 }
 ?>
