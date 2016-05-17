@@ -40,9 +40,9 @@
                 </label>
                 <?php if (ISSET($_REQUEST["field_messages"]["role"])) {
                 ?>
-                    <div class="alert alert-danger">
+                    <!--<div class="alert alert-danger">
                     <strong>Danger!</strong><?php echo $_REQUEST["field_messages"]["role"]; ?>
-                    </div>
+                    </div>-->
                 <?php
                     }
                 ?>

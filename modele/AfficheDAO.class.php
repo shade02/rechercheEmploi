@@ -10,11 +10,9 @@ class AfficheDAO{
                 " VALUES ('".$x->getTitrePoste()."','".$x->getDescription().
                 "','".$x->getNiveau()."','".$x->getExp()."',".$x->getSalaire().",'".$x->getStatut()."','".$x->getDuree().
                 "','".$x->getContact()."',".$x->getTel().",'".$x->getCourriel()."',".$x->getNoEntreprise().",'".$x->getNomUser()."')";*/
-        //$request = "INSERT INTO affiche (DatePublication, TitrePoste, Description, Niveau, Experience, Duree, Contact,Salaire, Telephone, Courriel, UserName) VALUES (SYSDATE(),'" . $x->getTitrePoste() . "', '" . $x->getDescription() . "', '" . $x->getNiveau() . "', '" . $x->getExp() ."','". $x->getDuree() ."',' ".$x->getContact()."',".$x->getSalaire().",".$x->getTel().",'".$x->getCourriel()."','".$x->getNomUser()."')";
-        $request = "INSERT INTO affiche (DatePublication,TitrePoste,Description,Niveau,Experience,Salaire,Duree,Contact,Telephone,Courriel,UserName) "
-                . "VALUES (SYSDATE(),'".$x->getTitrePoste()."','".$x->getDescription()."','".$x->getNiveau()."','".$x->getExp()."',"
-                .$x->getSalaire().",'".$x->getDuree()."','".$x->getContact()."',".$x->getTel().",'"
-                .$x->getCourriel()."','".$x->getNomUser()."')";
+        $request = "INSERT INTO affiche (DatePublication, TitrePoste, Description, Niveau, Experience, Duree, Contact,Salaire, Telephone, Courriel, UserName) VALUES (SYSDATE(),'" . $x->getTitrePoste() . "', '" . $x->getDescription() . "', '" . $x->getNiveau() . "', '" . $x->getExp() ."','". $x->getDuree() ."',' ".$x->getContact()."',".$x->getSalaire().",".$x->getTel().",'".$x->getCourriel()."','".$x->getNomUser()."')";
+        /*$request = "INSERT INTO affiche (DatePublication,TitrePoste,Description) "
+                . "VALUES (SYSDATE(),'".$x->getTitrePoste()."','".$x->getDescription()."')";*/
         try{
             $db = Database::getInstance();
             /*

@@ -57,7 +57,7 @@
             <div class="form-group">
                 <label for="experience">Années d'expérience : </label>
                 <select class="form-control" name="experience">
-                    <option>Moins d'un an</option>
+                    <option>Moins de 1 an</option>
                     <option>1 à 2 ans</option>
                     <option>2 à 3 ans</option>
                     <option>3 à 4 ans</option>
@@ -83,7 +83,7 @@
                 <select class="form-control" name="statut">
                     <option>Temps plein</option>
                     <option>Temps partiel</option>
-                    <option>Contractuel</option>
+                    
                 </select> 
 <?php 
     if(isset($_REQUEST['messageErreurStatut'])) {
@@ -99,7 +99,7 @@
                 <label for="duree">Durée : </label>
                 <select class="form-control" name="duree">
                     <option>Indéterminé</option>
-                    <option>Moins d'un an</option>
+                    <option>Moins de 1 an</option>
                     <option>1 an</option>
                     <option>2 ans</option>
                     <option>3 ans et +</option>
