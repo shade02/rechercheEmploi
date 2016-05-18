@@ -31,7 +31,7 @@
                     <label for="courriel">Courriel : </label>
                     <input type="text"  class="form-control" name="courriel" value="<?php if(isset($_SESSION['courriel'])) echo $_SESSION['courriel']; ?>"/>
                     <label for="telephone">Téléphone : </label>
-                    <input type="number"  class="form-control" name="telephone" value="<?php if(isset($_SESSION['telephone'])) echo $_SESSION['telephone']; ?>"/>
+                    <input type="text"  class="form-control" name="telephone" value="<?php if(isset($_SESSION['telephone'])) echo $_SESSION['telephone']; ?>"/>
                     <br />                    
                     <button type="submit" class="btn btn-primary">Sauvegarder</button>
                 </div>

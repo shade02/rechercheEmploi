@@ -55,7 +55,8 @@ if (!ISSET($_SESSION)) {
               <tr>
                 <td ><?php echo $a->getDatePublication();?></td>
                 <td ><?php echo $a->getTitrePoste();?></td><td><a href='?action=details&id=<?php echo $a->getNoAffiche();?>'>Détails</a></td>
-                <td><a href='?action=supprimer&numSupp=<?php echo $a->getNoAffiche();?>'><span class='glyphicon glyphicon-trash'></span></a></td>
+                <td><a href='?action=modifierAff&numMod=<?php echo $a->getNoAffiche();?>' title='Modifier'><span class='glyphicon glyphicon-edit'></span></a></td>
+                <td><a href='?action=supprimer&numSupp=<?php echo $a->getNoAffiche();?>' title='Supprimer'><span class='glyphicon glyphicon-trash'></span></a></td>
               </tr>
               
  <?php

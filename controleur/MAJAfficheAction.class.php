@@ -3,7 +3,7 @@ require_once('./controleur/Action.interface.php');
 require_once('./modele/classes/Affiche.class.php');
 require_once('./modele/AfficheDAO.class.php');
 
-class PublierAction implements Action{
+class MAJAfficheAction implements Action{
     public function execute(){
         if (!ISSET($_SESSION)) session_start();
         $Affiche = new Affiche();
@@ -39,9 +39,9 @@ class PublierAction implements Action{
         $Affiche->setCourriel($_REQUEST['courriel']);
         $Affiche->setNomUser($_SESSION['connecte']);
         $AfficheDAO = new AfficheDAO();
-        $AfficheDAO->create($Affiche);     
+        $AfficheDAO->update($Affiche);     
           
-        return "default"; 
+        return "afficherprive"; 
         
     }
     

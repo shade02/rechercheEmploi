@@ -15,5 +15,9 @@ class Database
 				Config::DB_PWD);
 		return self::$instance;
 	}
+        public static function close()
+        {
+        self::$instance = NULL;
+        }
 }
 ?>

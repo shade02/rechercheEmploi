@@ -12,6 +12,9 @@ require_once('./controleur/DetailsAction.class.php');
 require_once('./controleur/AfficherCandidatsAction.class.php');
 require_once('./controleur/AfficherPriveAction.class.php');
 require_once('./controleur/SupprimerAfficheAction.class.php');
+require_once('./controleur/ModifierAfficheAction.class.php');
+require_once('./controleur/MAJAfficheAction.class.php');
+
 class ActionBuilder{
 	public static function getAction($nom){
 		switch ($nom)
@@ -19,40 +22,59 @@ class ActionBuilder{
 			case "connecter" :
                             return new LoginAction();
                             break; 
+                        
 			case "deconnecter" :
                             return new LogoutAction();
                             break; 
+                        
                         case "inscrire" :
                             return new SigninAction();
                             break;
+                        
                         case "profil" :
                             return new ProfilAction();
                             break;
+                        
                         case "sauvegarder" :
                             return new SauvegarderAction();
                             break;
+                        
                         case "creer" :
                             return new CreerAction();
                             break;
+                        
                         case "publier" :
                             return new PublierAction();
                             break;
+                        
 			case "affichertout" :
-				return new AfficherToutAction();
-                            break; 
+                            return new AfficherToutAction();
+                            break;
+                        
                         case "details" :
                             return new DetailsAction();
                             break;
+                        
                         case "affichercandidats" :
-				return new AfficherCandidatsAction();
+                            return new AfficherCandidatsAction();
                             break; 
+                        
                         case "afficherprive" :
-				return new AfficherPriveAction();
-                            break; 
+                            return new AfficherPriveAction();
+                            break;
+                        
 			case "supprimer" :
-				return new SupprimerAfficheAction();
-			break; 
-			default :
+                            return new SupprimerAfficheAction();
+                            break; 
+                        
+                        case "modifieraff" :
+                            return new ModifierAfficheAction();
+                            break;
+                        
+			case "majaffiche" :
+                            return new MAJAfficheAction();
+                            break;
+                        default :
                             return new DefaultAction();
 		}
 	}

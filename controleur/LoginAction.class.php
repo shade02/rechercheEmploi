@@ -18,8 +18,7 @@ class LoginAction implements Action{
                 $_REQUEST['EmployeurState'] = true;
                 if (!ISSET($_REQUEST['username']))
                     $vue = "login";
-                if (!$this->valide()){
-                    //$_REQUEST["global_message"] = "Le formulaire contient des erreurs. Veuillez les corriger.";	
+                if (!$this->valide()){	
                     $vue = "login";
                 }
 
@@ -34,14 +33,15 @@ class LoginAction implements Action{
                     if($emp->getMotDePasse() != $_REQUEST["password"]){
                         $_REQUEST["field_messages"]["password"] = "Mot de passe incorrect.";	
                         $vue = "login";
-                    }     
-                    if (!ISSET($_SESSION)) session_start();
-                    $_SESSION["connecte"] = $_REQUEST["username"];
-                    $_SESSION["role"] = "employeur";
-                    $_SESSION['nomEntreprise'] = $emp->getNomEntr();
-                    $_SESSION['courriel'] = $emp->getCourriel();
-                    $_SESSION['telephone'] = $emp->getTelephone();
-                    $vue = "default";
+                    }else{     
+                        if (!ISSET($_SESSION)) session_start();
+                        $_SESSION["connecte"] = $_REQUEST["username"];
+                        $_SESSION["role"] = "employeur";
+                        $_SESSION['nomEntreprise'] = $emp->getNomEntr();
+                        $_SESSION['courriel'] = $emp->getCourriel();
+                        $_SESSION['telephone'] = $emp->getTelephone();
+                        $vue = "default";
+                    }
                 }
             }
             elseif (ISSET($_REQUEST['optradio']) && $_REQUEST['optradio']=="candidat" ) {
@@ -64,14 +64,15 @@ class LoginAction implements Action{
                     if($cand->getMotDePasse() != $_REQUEST["password"]){
                         $_REQUEST["field_messages"]["password"] = "Mot de passe incorrect.";	
                         $vue = "login";
-                    }     
-                    if (!ISSET($_SESSION)) session_start();
-                    $_SESSION["connecte"] = $_REQUEST["username"];
-                    $_SESSION["role"] = "candidat";
-                    $_SESSION['nom'] = $cand->getNom();
-                    $_SESSION['prenom'] = $cand->getPrenom();
-                    $_SESSION['courriel'] = $cand->getCourriel();
-                    $vue = "default";
+                    }else{     
+                        if (!ISSET($_SESSION)) session_start();
+                        $_SESSION["connecte"] = $_REQUEST["username"];
+                        $_SESSION["role"] = "candidat";
+                        $_SESSION['nom'] = $cand->getNom();
+                        $_SESSION['prenom'] = $cand->getPrenom();
+                        $_SESSION['courriel'] = $cand->getCourriel();
+                        $vue = "default";
+                    }
                 }
             
             }

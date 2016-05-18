@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+    if (!ISSET($_SESSION)) session_start();
+?>
 <html lang="en">
 <head>
   <title>Site de recherche d'emploi</title>

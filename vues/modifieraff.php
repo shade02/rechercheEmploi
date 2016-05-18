@@ -20,12 +20,19 @@
         include_once('./vues/menu.php');
     ?>
     <div class="col-sm-8 text-left"> 
-        <form action="?action=publier" method="post">
-           <h1>Création d'une offre d'emploi</h1>
-            <p>Veuillez remplir le formulaire: </p>
+    <?php
+        
+        $dao = new AfficheDAO();
+        $a = $dao->find($_REQUEST['numMod']);
+    ?>
+        <form action="?action=majaffiche" method="post">
+           <h1>Modifier l'offre d'emploi</h1>
+            <div class="alert alert-warning">
+                <p><strong>Attention!</strong> Assurez-vous que les champs pour l'expérience, le statut et la durée sont bien séléctionnés.</p>
+            </div>
             <div class="form-group">
                 <label for="titre">Titre du poste: </label>
-                <input type="text"  class="form-control" name="titre"/>
+                <input type="text"  class="form-control" name="titre" value="<?php echo $a->getTitrePoste(); ?>"/>
 <?php
     if(isset($_REQUEST['messageErreurTitre'])) {
 ?>        
@@ -37,8 +44,9 @@
 ?>
             </div>
             <div class="form-group">
+               
                 <label for="description">Description : </label>
-                <textarea class="form-control" name="description"></textarea>
+                <textarea class="form-control" name="description" ><?php echo $a->getDescription(); ?></textarea>
 <?php 
     if(isset($_REQUEST['messageErreurDescription'])) {
 ?>        
@@ -51,7 +59,7 @@
             </div>
             <div class="form-group">
                 <label for="niveau">Niveau de scolarité : </label>
-                <select class="form-control" name="niveau">
+                <select class="form-control" name="niveau" value="<?php echo $a->getNiveau(); ?>">
                     <option>Secondaire</option>
                     <option>Collégial</option>
                     <option>Universitaire</option>
@@ -59,7 +67,7 @@
             </div>
             <div class="form-group">
                 <label for="experience">Années d'expérience : </label>
-                <select class="form-control" name="experience">
+                <select class="form-control" name="experience" value="<?php echo $a->getExp(); ?>">
                     <option>Moins de 1 an</option>
                     <option>1 à 2 ans</option>
                     <option>2 à 3 ans</option>
@@ -70,7 +78,7 @@
             </div>
             <div class="form-group">
                 <label for="salaire">Salaire(horaire) : </label>
-                <input type="text"  class="form-control" name="salaire"/>
+                <input type="text" class="form-control" name="salaire" value="<?php echo $a->getSalaire(); ?>"/>
 <?php 
     if(isset($_REQUEST['messageErreurSalaire'])) {
 ?>        
@@ -83,7 +91,7 @@
             </div>
             <div class="form-group">
                 <label for="statut">Statut: </label>
-                <select class="form-control" name="statut">
+                <select class="form-control" name="statut" value="<?php echo $a->getStatut(); ?>">
                     <option>Temps plein</option>
                     <option>Temps partiel</option>
                     
@@ -100,7 +108,7 @@
             </div>
             <div class="form-group">
                 <label for="duree">Durée : </label>
-                <select class="form-control" name="duree">
+                <select class="form-control" name="duree" value="<?php echo $a->getDuree(); ?>">
                     <option>Indéterminé</option>
                     <option>Moins de 1 an</option>
                     <option>1 an</option>
@@ -119,12 +127,12 @@
             </div>
             <div class="form-group">
                 <label for="contact">Personne à contacter: </label>
-                <input type="text"  class="form-control" name="contact"/>
+                <input type="text"  class="form-control" name="contact" value="<?php echo $a->getContact(); ?>"/>
             </div>
             
             <div class="form-group">
                 <label for="telephone">Telephone: </label>
-                <input type="text"  class="form-control" name="telephone"/>
+                <input type="text"  class="form-control" name="telephone" value="<?php echo $a->getTel(); ?>"/>
 <?php
     if(isset($_REQUEST['messageErreurTelephone'])) {
 ?>        
@@ -137,7 +145,7 @@
             </div>
             <div class="form-group">
                 <label for="courriel">Courriel: </label>
-                <input type="text"  class="form-control" name="courriel"/>
+                <input type="text"  class="form-control" name="courriel" value="<?php echo $a->getCourriel(); ?>"/>
 <?php
     if(isset($_REQUEST['messageErreurCourriel'])) {
 ?>        
@@ -149,8 +157,8 @@
 ?>
             </div>
             <br />
-            <input name="action" value="publier" type="hidden" />
-            <button type="submit" class="btn btn-default">Publier</button>
+            <input name="action" value="majaffiche" type="hidden" />
+            <button type="submit" class="btn btn-default">Mettre à jour</button>
         </form>        
     </div>
     <?php
