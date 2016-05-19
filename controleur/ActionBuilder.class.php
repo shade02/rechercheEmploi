@@ -15,6 +15,7 @@ require_once('./controleur/SupprimerAfficheAction.class.php');
 require_once('./controleur/ModifierAfficheAction.class.php');
 require_once('./controleur/MAJAfficheAction.class.php');
 require_once('./controleur/JoindreAction.class.php');
+require_once('./controleur/AProposAction.class.php');
 
 
 class ActionBuilder{
@@ -79,6 +80,9 @@ class ActionBuilder{
                         
                         case "joindre" :
                             return new JoindreAction();
+                            break;
+                        case "apropos" :
+                            return new AProposAction();
                             break;
                         
                         default :

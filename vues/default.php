@@ -21,6 +21,32 @@
   <div id="main" class="row content">
     <?php
         include_once('./vues/menu.php');
+        
+        if (!ISSET($_SESSION)) session_start();
+        if (ISSET($_SESSION["role"]) && $_SESSION["role"]=="employeur" && ISSET($_SESSION['connecte'])){
+    ?>
+        <div class="col-sm-8 text-left"> 
+      
+            <h2>Bonjour! <?php echo $_SESSION['connecte']?></h2><br/>
+            <p>N'oubliez pas de faire la mise à jour de votre profil.</p>
+            <hr>
+            <h3>Actualités</h3>
+            <p>À venir...</p>
+        </div>
+    <?php        
+        }elseif(ISSET($_SESSION["role"]) && $_SESSION["role"]=="candidat" && ISSET($_SESSION['connecte'])){
+    ?>
+        <div class="col-sm-8 text-left"> 
+            
+            <h2>Bonjour! <?php echo $_SESSION['connecte']?></h2><br/>
+            <p>N'oubliez pas de faire la mise à jour de votre profil.</p><br/>
+            <p>Ajouter un CV peut augmenter vos chances d'être contacté pas un employeur!
+            <hr>
+            <h3>Actualités</h3>
+            <p>À venir...</p>
+        </div>
+    <?php        
+        }else{
     ?>
     <div class="col-sm-8 text-left"> 
       
@@ -31,6 +57,7 @@
       <p>À venir...</p>
     </div>
     <?php
+        }
     include_once('./vues/sidenav.php');
     ?>
   </div>

@@ -45,7 +45,7 @@ class SauvegarderAction implements Action {
                 if(empty($errors)==true){
                    move_uploaded_file($file_tmp,"cv/".$file_name);
                    $Candidat->setCv("cv/" . $file_name);
-                   echo "Success";
+                   $_REQUEST['messageFichier'] = "Votre cv a été ajouté avec succès.";
                 }else{
                    print_r($errors);
                 }

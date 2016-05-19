@@ -16,7 +16,7 @@ if (!ISSET($_SESSION)) session_start();
       <ul class="nav navbar-nav">
         <li class="active"><a href="?action=">Accueil</a></li>
         <li><a href="?action=profil">Profil</a></li>
-        <li><a href="#">À propos</a></li>
+        <li><a href="?action=apropos">À propos</a></li>
         <li><a href="?action=joindre">Nous joindre</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">

@@ -51,8 +51,17 @@
         <p><label>Telephone: </label><br/><?php echo $a->getTel(); ?></p><br/>
         <p><label>Courriel: </label><br/><?php echo $a->getCourriel(); ?></p><br/>
         
-        
+    <?php
+        if (!ISSET($_SESSION)) session_start();
+        if (ISSET($_SESSION["connecte"]) && $a->getNomUser()==$_SESSION['connecte']){
+    ?>
+            <button type="submit" class="btn btn-default"><a href="?action='modifieraff&numMod=<?php echo $a->getNoAffiche();?>">Modifier</a></button>
+            <button type="submit" class="btn btn-default"><a href="?action='afficherprive">Retour</a></button>
+    <?php
+        }
+    ?>
     </div>
+    
     </div>
     <?php
     include_once('./vues/sidenav.php');

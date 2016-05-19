@@ -1,6 +1,6 @@
 <?php
 if (!ISSET($_SESSION)) session_start();
- if (ISSET($_SESSION["role"]) && $_SESSION["role"]=="employeur"){
+ if (ISSET($_SESSION['connecte']) && ISSET($_SESSION["role"]) && $_SESSION["role"]=="employeur"){
 ?>
     <div class="col-sm-2 sidenav">
         <p><a href="?action=creer">Créer une offre d'emploi</a></p>

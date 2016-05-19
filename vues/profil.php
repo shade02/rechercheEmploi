@@ -55,7 +55,7 @@
                     <?php 
     if(isset($_REQUEST['messageFichier'])) {
 ?>        
-                <div class="alert alert-warning">
+                <div class="alert alert-info">
                     <strong>Attention!</strong><?php echo $_REQUEST['messageFichier'] ?>
                 </div>
 <?php

@@ -23,8 +23,11 @@
         include_once('./vues/menu.php');
     ?>
     <div class="col-sm-8 text-left"> 
-        <h1>Nous joindre</h1><br/>
-      <p>Pour toute informations, commentaires ou demande d'aide: <br/><br/>Contacter l'Administrateur : mjonathas@hotmail.com</p>
+        <h1>À Propos de Uwork</h1><br/>
+        <img src="./images/Uwork().png" />
+        <p>Uwork est un site dédié a aider les gens à se trouver un emploi de façon simple et efficace. Les employeurs peuvent gratuitement et facilement offrir des postes d'emplois à ceux qui en cherche de facon sérieuse.</p>
+        <br/>Uwork est la place pour se démarquer sans aucune complications ou de procédures!</p><br/>
+        <p> Déuter votre carrières sans problèmes avec Uwork!</p>
       <hr>
       
     </div>
