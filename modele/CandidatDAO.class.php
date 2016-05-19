@@ -4,13 +4,26 @@ include_once('./modele/classes/Candidat.class.php');
 include_once('./modele/classes/Liste.class.php');
 
 class CandidatDAO{
-    public function create($x){
-        $request = "INSERT INTO candidat (UserName,MotDePasse,Nom,Prenom,Courriel,CV)".
+    public function create(Candidat $x){
+         $db = Database::getInstance();
+         
+        /*$request = "INSERT INTO candidat (UserName,MotDePasse,Nom,Prenom,Courriel,CV)".
                 "VALUES ('".$x->getNomUser()."','".$x->getMotDePasse()."','".$x->getNom().
-                "','".$x->getprenom()."','".$x->getCourriel()."','".$x->getCv()."')";
+                "','".$x->getprenom()."','".$x->getCourriel()."','".$x->getCv()."')";*/
         try{
-            $db = Database::getInstance();
-            return $db->exec($request);
+            $pstmt = $db->prepare("INSERT INTO candidat (UserName,MotDePasse,Nom,Prenom,Courriel,CV)"
+                    . "VALUES (:username,:motdepasse,:nom,:prenom,:courriel,:cv)");
+            $pstmt->execute(array(':username' => $x->getNomUser(),
+                                  ':motdepasse' => $x->getMotDePasse(),
+                                  ':nom' => $x->getNom(),
+                                  ':prenom' => $x->getPrenom(),
+                                  ':courriel' => $x->getCourriel(),
+                                  ':cv' => $x->getCv()))or die (print_r($pstmt->errorInfo(), true));
+            //$db = Database::getInstance();
+            $pstmt->closeCursor();
+            $pstmt = NULL;
+            Database::close();
+            //return $db->exec($request);
         } catch (Exception $ex) {
             throw $ex;
         }
@@ -61,11 +74,21 @@ class CandidatDAO{
     }
     
     public function update($x){
-        $request = "UPDATE candidat SET Nom = '".$x->getNom()."', Prenom = '".$x->getPrenom()."', Courriel = '".$x->getCourriel()."', CV = '".$x->getCv()."'".
-                " WHERE  UserName = '".$x->getNomUser()."'";
+        $db = Database::getInstance(); 
+        /*$request = "UPDATE candidat SET Nom = '".$x->getNom()."', Prenom = '".$x->getPrenom()."', Courriel = '".$x->getCourriel()."', CV = '".$x->getCv()."'".
+                " WHERE  UserName = '".$x->getNomUser()."'";*/
         try{
-            $db = Database::getInstance();
-            return $db->exec($request);
+            $pstmt = $db->prepare("UPDATE candidat SET Nom=:nom, Prenom=:prenom, Courriel=:courriel, CV=:cv WHERE UserName=:username");
+            $pstmt->execute(array(':username' => $x->getNomUser(),
+                                  ':nom' => $x->getNom(),
+                                  ':prenom' => $x->getPrenom(),
+                                  ':courriel' => $x->getCourriel(),
+                                  ':cv' => $x->getCv()))or die (print_r($pstmt->errorInfo(), true)); 
+            //$db = Database::getInstance();
+           // return $db->exec($request);
+            $pstmt->closeCursor();
+            $pstmt = NULL;
+            Database::close();
         } catch (Exception $ex) {
             throw $ex;
         }

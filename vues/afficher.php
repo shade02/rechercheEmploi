@@ -34,6 +34,7 @@
         <table class="table table-bordered">
             <thead>
               <tr>
+                <th >No. Offre</th>
                 <th >Date</th>
                 <th > Poste</th>
               </tr>
@@ -47,6 +48,7 @@
     
 ?>
               <tr>
+                <td ><?php echo $a->getNoAffiche();?></td>
                 <td ><?php echo $a->getDatePublication();?></td>
                 <td ><?php echo $a->getTitrePoste();?></td><td><a href='?action=details&id=<?php echo $a->getNoAffiche();?>'>Détails</a></td>
               </tr>

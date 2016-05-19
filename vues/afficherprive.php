@@ -35,12 +35,13 @@ if (!ISSET($_SESSION)) {
     require_once('./modele/AfficheDAO.class.php');
     
 ?>
-    <div class="col-sm-6">
+    <div class="col-sm-7">
         <table class="table table-bordered">
             <thead>
               <tr>
-                <th >Date</th>
-                <th > Poste</th>
+                <th>No. Offre</th>
+                <th>Date</th>
+                <th>Poste</th>
               </tr>
             </thead>
             <tbody>
@@ -53,8 +54,9 @@ if (!ISSET($_SESSION)) {
             if($a->getNomUser()== $_SESSION['connecte']){
 ?>
               <tr>
-                <td ><?php echo $a->getDatePublication();?></td>
-                <td ><?php echo $a->getTitrePoste();?></td><td><a href='?action=details&id=<?php echo $a->getNoAffiche();?>'>Détails</a></td>
+                <td><?php echo $a->getNoAffiche();?></td>
+                <td><?php echo $a->getDatePublication();?></td>
+                <td><?php echo $a->getTitrePoste();?></td><td><a href='?action=details&id=<?php echo $a->getNoAffiche();?>'>Détails</a></td>
                 <td><a href='?action=modifierAff&numMod=<?php echo $a->getNoAffiche();?>' title='Modifier'><span class='glyphicon glyphicon-edit'></span></a></td>
                 <td><a href='?action=supprimer&numSupp=<?php echo $a->getNoAffiche();?>' title='Supprimer'><span class='glyphicon glyphicon-trash'></span></a></td>
               </tr>

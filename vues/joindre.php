@@ -23,12 +23,10 @@
         include_once('./vues/menu.php');
     ?>
     <div class="col-sm-8 text-left"> 
-      
-      <h2>Bienvenue sur le site de recherche d'emploi Uwork!</h2><br/>
-      <p>Le site d'emploi proffessionnels! <br/><br/>Inscrivez vous dès maintenant pour débuter la recherche vers votre carrière!</p>
+        <h1>Nous joindre</h1><br/>
+      <p>Pour toute informations ou demande d'aide: <br/><br/>Contacter l'Administrateur : mjonathas@hotmail.com</p>
       <hr>
-      <h3>Actualités</h3>
-      <p>À venir...</p>
+      
     </div>
     <?php
     include_once('./vues/sidenav.php');

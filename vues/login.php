@@ -49,16 +49,26 @@
                 <div class="form-group">
                     <label for="username">Nom d'utilisateur: </label>
                     <input type="text"  class="form-control" name="username" value="<?php echo $u?>"/>
-                    <?php if (ISSET($_REQUEST["field_messages"]["username"])) 
-				echo "<span class=\"warningMessage\">".$_REQUEST["field_messages"]["username"]."</span>";
-                    ?>
+                    <?php if (ISSET($_REQUEST["field_messages"]["username"])) {?>
+                        <div class="alert alert-danger">
+                            <strong>Attention! </strong><?php echo $_REQUEST['field_messages']['username']?>
+                        </div>
+                   
+                    <?php
+                    }?>
+				
+                    
                 </div>
                 <div class="form-group">
                     <label for="password">Mot de passe: </label>
                     <input type="password" class="form-control" name="password"/>
-                    <?php if (ISSET($_REQUEST["field_messages"]["password"])) 
-				echo "<span class=\"warningMessage\">".$_REQUEST["field_messages"]["password"]."</span>";
-                    ?>
+                    <?php if (ISSET($_REQUEST["field_messages"]["password"])) {?>
+                        <div class="alert alert-danger">
+                            <strong>Attention! </strong><?php echo $_REQUEST['field_messages']['password']?>
+                        </div>
+                   
+                    <?php
+                    }?>
                 </div>
                 <input name="action" value="connecter" type="hidden" />
                 <button type="submit" class="btn btn-default">Connexion</button>

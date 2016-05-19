@@ -1,3 +1,3 @@
 <footer class="footer container-fluid text-center">
-  <p>Footer Text</p>
+  <p>2016 © Uwork Inc. Tous droits réservés.</p>
 </footer>

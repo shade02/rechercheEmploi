@@ -5,12 +5,24 @@ include_once('./modele/classes/Liste.class.php');
 
 class EmployeurDAO{
     public function create($x){
+        $db = Database::getInstance();
         $request = "INSERT INTO employeur (UserName,MotDePasse,NomEntr,NoEntreprise,Courriel,Telephone)".
                 "VALUES ('".$x->getNomUser()."','".$x->getMotDePasse()."','".$x->getNomEntr().
                 "','".$x->getNoEntreprise()."','".$x->getCourriel()."','".$x->getTelephone()."')";
         try{
-            $db = Database::getInstance();
-            return $db->exec($request);
+            $pstmt = $db->prepare("INSERT INTO employeur (UserName,MotDePasse,NomEntr,NoEntreprise,Courriel,Telephone)"
+                    . "VALUES (:username,:motdepasse,:nomentr,:noentreprise,:courriel,:telephone)");
+            $pstmt->execute(array(':username' => $x->getNomUser(),
+                                  ':motdepasse' => $x->getMotDePasse(),
+                                  ':nomentr' => $x->getNomEntr(),
+                                  ':noentreprise' => $x->getNoEntreprise(),
+                                  ':courriel' => $x->getCourriel(),
+                                  ':telephone' => $x->getTelephone()))or die (print_r($pstmt->errorInfo(), true));
+            //$db = Database::getInstance();
+            $pstmt->closeCursor();
+            $pstmt = NULL;
+            Database::close();
+           // return $db->exec($request);
         } catch (Exception $ex) {
             throw $ex;
         }
@@ -61,11 +73,22 @@ class EmployeurDAO{
     }
     
     public function update($x){
-        $request = "UPDATE employeur SET NomEntr = '".$x->getNomEntr()."', NoEntreprise = '".$x->getNoEntreprise()."', Courriel = '".$x->getCourriel()."', Telephone = '".$x->getTelephone()."'".
-                " WHERE UserName = '".$x->getNomUser()."'";
+        $db = Database::getInstance();
+        /*$request = "UPDATE employeur SET NomEntr = '".$x->getNomEntr()."', NoEntreprise = '".$x->getNoEntreprise()."', Courriel = '".$x->getCourriel()."', Telephone = '".$x->getTelephone()."'".
+                " WHERE UserName = '".$x->getNomUser()."'";*/
         try{
-            $db = Database::getInstance();
-            return $db->exec($request);
+            $pstmt = $db->prepare("UPDATE employeur SET NomEntr=:nomentr, NoEntreprise=:noentreprise, Courriel=:courriel, Telephone=:telephone "
+                    . "WHERE UserName=:username");
+            $pstmt->execute(array(':username' => $x->getNomUser(),
+                                  ':nomentr' => $x->getNomEntr(),
+                                  ':noentreprise' => $x->getNoEntreprise(),
+                                  ':courriel' => $x->getCourriel(),
+                                  ':telephone' => $x->getTelephone()))or die (print_r($pstmt->errorInfo(), true));
+           // $db = Database::getInstance();
+            $pstmt->closeCursor();
+            $pstmt = NULL;
+            Database::close();
+            //return $db->exec($request);
         } catch (Exception $ex) {
             throw $ex;
         }   

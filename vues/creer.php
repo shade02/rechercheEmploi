@@ -25,12 +25,12 @@
             <p>Veuillez remplir le formulaire: </p>
             <div class="form-group">
                 <label for="titre">Titre du poste: </label>
-                <input type="text"  class="form-control" name="titre"/>
+                <input type="text"  class="form-control" name="titre" values="<?php if(isset($_POST['titre'])){ echo htmlentities($_POST['titre']);}?>"/>
 <?php
     if(isset($_REQUEST['messageErreurTitre'])) {
 ?>        
                 <div class="alert alert-danger">
-                    <strong>Danger !  </strong><?php echo $_REQUEST['messageErreurTitre'] ?>
+                    <strong>Erreur !  </strong><?php echo $_REQUEST['messageErreurTitre'] ?>
                 </div>
 <?php
     }
@@ -38,16 +38,8 @@
             </div>
             <div class="form-group">
                 <label for="description">Description : </label>
-                <textarea class="form-control" name="description"></textarea>
-<?php 
-    if(isset($_REQUEST['messageErreurDescription'])) {
-?>        
-                <div class="alert alert-danger">
-                    <strong>Danger !  </strong><?php echo $_REQUEST['messageErreurDescription'] ?>
-                </div>
-<?php
-    }
-?>            
+                <textarea class="form-control" name="description" rows="8"><?= isset($_REQUEST['description'])?$_REQUEST['description']:'' ?></textarea>
+      
             </div>
             <div class="form-group">
                 <label for="niveau">Niveau de scolarité : </label>
@@ -75,7 +67,7 @@
     if(isset($_REQUEST['messageErreurSalaire'])) {
 ?>        
                 <div class="alert alert-danger">
-                    <strong>Danger !  </strong><?php echo $_REQUEST['messageErreurDescription'] ?>
+                    <strong>Erreur !  </strong><?php echo $_REQUEST['messageErreurSalaire'] ?>
                 </div>
 <?php
     }
@@ -88,15 +80,7 @@
                     <option>Temps partiel</option>
                     
                 </select> 
-<?php 
-    if(isset($_REQUEST['messageErreurStatut'])) {
-?>        
-                <div class="alert alert-danger">
-                    <strong>Danger !  </strong><?php echo $_REQUEST['messageErreurStatut'] ?>
-                </div>
-<?php
-    }
-?>      
+     
             </div>
             <div class="form-group">
                 <label for="duree">Durée : </label>
@@ -107,15 +91,7 @@
                     <option>2 ans</option>
                     <option>3 ans et +</option>
                 </select> 
-<?php 
-    if(isset($_REQUEST['messageErreurDuree'])) {
-?>        
-                <div class="alert alert-danger">
-                    <strong>Danger !  </strong><?php echo $_REQUEST['messageErreurDuree'] ?>
-                </div>
-<?php
-    }
-?>      
+    
             </div>
             <div class="form-group">
                 <label for="contact">Personne à contacter: </label>
@@ -124,12 +100,12 @@
             
             <div class="form-group">
                 <label for="telephone">Telephone: </label>
-                <input type="text"  class="form-control" name="telephone"/>
+                <input type="text"  class="form-control" name="telephone" maxlength="10"/>
 <?php
     if(isset($_REQUEST['messageErreurTelephone'])) {
 ?>        
                 <div class="alert alert-danger">
-                    <strong>Danger !  </strong><?php echo $_REQUEST['messageErreurTelephone'] ?>
+                    <strong>Erreur !  </strong><?php echo $_REQUEST['messageErreurTelephone'] ?>
                 </div>
 <?php
     }
@@ -142,7 +118,7 @@
     if(isset($_REQUEST['messageErreurCourriel'])) {
 ?>        
                 <div class="alert alert-danger">
-                    <strong>Danger !  </strong><?php echo $_REQUEST['messageErreurCourriel'] ?>
+                    <strong>Erreur !  </strong><?php echo $_REQUEST['messageErreurCourriel'] ?>
                 </div>
 <?php
     }

@@ -14,6 +14,8 @@ require_once('./controleur/AfficherPriveAction.class.php');
 require_once('./controleur/SupprimerAfficheAction.class.php');
 require_once('./controleur/ModifierAfficheAction.class.php');
 require_once('./controleur/MAJAfficheAction.class.php');
+require_once('./controleur/JoindreAction.class.php');
+
 
 class ActionBuilder{
 	public static function getAction($nom){
@@ -74,6 +76,11 @@ class ActionBuilder{
 			case "majaffiche" :
                             return new MAJAfficheAction();
                             break;
+                        
+                        case "joindre" :
+                            return new JoindreAction();
+                            break;
+                        
                         default :
                             return new DefaultAction();
 		}
