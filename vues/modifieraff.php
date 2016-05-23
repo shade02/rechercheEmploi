@@ -24,6 +24,7 @@
         
         $dao = new AfficheDAO();
         $a = $dao->find($_REQUEST['numMod']);
+        $_SESSION['affiche']= $_REQUEST['numMod'];
     ?>
         <form action="?action=majaffiche" method="post">
            <h1>Modifier l'offre d'emploi</h1>

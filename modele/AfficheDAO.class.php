@@ -87,8 +87,8 @@ class AfficheDAO{
         $db = Database::getInstance();
         try{
             $pstmt = $db->prepare("UPDATE affiche SET TitrePoste=:titre, Description=:description, Niveau=:niveau, Experience=:experience, Duree=:duree, Contact=:contact, Salaire=:salaire, Statut=:statut, Telephone=:telephone, Courriel=:courriel"
-                    . " WHERE UserName=:username");
-            $pstmt->execute(array(':username' => $x->getNomUser(),
+                    . " WHERE NoAffiche=:noaffiche");
+            $pstmt->execute(array(':noaffiche' => $x->getNoAffiche(),
                                   ':titre' => $x->getTitrePoste(),
                                   ':description' => $x->getDescription(),
                                   ':niveau' => $x->getNiveau(),

@@ -44,6 +44,7 @@ class MAJAfficheAction implements Action{
             return "modifieraff";
         }else{
         $Affiche = new Affiche();
+        $Affiche->setNoAffiche($_SESSION['affiche']);
         $Affiche->setTitrePoste($_REQUEST['titre']);
         $Affiche->setDescription($_REQUEST['description']);
         $Affiche->setNiveau($_REQUEST['niveau']);
